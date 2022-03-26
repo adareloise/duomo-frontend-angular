@@ -1,1 +1,47 @@
-<p>listar works!</p>
+<div class="card border-primary mb-3">
+    <div class="card-header">Formularios</div>
+    <div class="card-body text-primary">
+      <h5 class="card-title">Listado de formularios</h5>
+      <div class="my-2 text-left">
+        <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/formulario']">
+          Crear Cliente
+        </button>
+      </div>
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>nombre</th>
+            <th>apellido</th>
+            <th>email</th>
+            <th>fecha de nacimiento</th>
+            <th>Telefono</th>
+            <th>Region</th>
+            <th>Comuna</th>
+            <th>editar</th>
+            <th>eliminar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let form of formularios">
+            <td>{{ form.id }}</td>
+            <td>{{ form.nombre }}</td>
+            <td>{{ form.apellido }}</td>
+            <td>{{ form.email }}</td>
+            <td>{{ form.fecha_nacimiento }}</td>
+            <td>{{ form.telefono }}</td>
+            <td>{{ form.region }}</td>
+            <td>{{ form.comuna }}</td>
+            <td>
+              <button type="button" name="editar" [routerLink]="['/formulario', form.id]" class="btn btn-primary btn-sm">editar</button>
+            </td>
+            <td>
+              <button type="button" name="eliminar" (click)='delete(form)' class="btn btn-danger btn-sm">eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  
+    </div>
+  </div>
+  

@@ -1,29 +1,32 @@
 <div class="container py-4">    
     <form>        
         <div class="mb-3">
-          <label for="name" class="form-label">Nombre</label>
-          <input type="text" class="form-control" id="name" name="name">
+          <label for="nombre" class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="formulario.nombre"> 
         </div>
         <div class="mb-3">
-          <label for="lastname" class="form-label">Apellido</label>
-          <input type="text" class="form-control" id="lastname" name="lastname">
+          <label for="apellido" class="form-label">Apellido</label>
+          <input type="text" class="form-control" id="apellido" name="apellido" [(ngModel)]="formulario.apellido">
         </div>
         <div class="mb-3">
            <label for="email" class="form-label">Correo</label>
-           <input type="email" class="form-control" id="email" name="email" >
+           <input type="email" class="form-control" id="email" name="email" [(ngModel)]="formulario.email" >
         </div>
         <div class="mb-3">
-            <label for="date" class="form-label">Fecha de nacimiento</label>
-            <input type="email" class="form-control" id="date" name="date" >
+            <label for=" fecha_nacimiento" class="form-label">Fecha de nacimiento</label>
+            <input type="text" class="form-control" id=" fecha_nacimiento" name=" fecha_nacimiento" [(ngModel)]="formulario.fecha_nacimiento" >
         </div>
         <div class="mb-3">
-            <label for="phone" class="form-label">Telefono</label>
-            <input type="text" class="form-control" id="phone" name="phone" >
+            <label for="telefono" class="form-label">Telefono</label>
+            <input type="text" class="form-control" id="telefono" name="telefono" [(ngModel)]="formulario.telefono" >
         </div> 
         
         <app-regiones></app-regiones>
         
-        <button type="submit" class="btn btn-primary my-4 float-end">Enviar</button>
+        <button type="submit" class="btn btn-primary my-4 float-end" (click)="create()" *ngIf="!formulario.id else elseBlock">Enviar</button>
+        <ng-template #elseBlock>
+          <button type="submit" class="btn btn-primary my-4 float-end" (click)="update()" *ngIf="!formulario.id else elseBlock">Editar</button>
+        </ng-template>
       </form>
 </div>
 

@@ -10,11 +10,14 @@ import { RegionService } from './regiones/region.service';
 import { ListarComponent } from './listar/listar.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule} from '@angular/common/http'
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {path:'', redirectTo: '/formulario', pathMatch: 'full'},
   {path:'formulario', component: FormularioComponent},
   {path:'listar', component: ListarComponent},
+  {path: 'formulario/:id', component: FormularioComponent}
+
 ]
 
 @NgModule({
@@ -28,6 +31,7 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     HttpClientModule,
     RouterModule.forRoot(routes)
   ],

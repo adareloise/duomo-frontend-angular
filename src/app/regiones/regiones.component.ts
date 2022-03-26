@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Formulario } from '../formulario/formulario';
 import { Region } from './region';
 import { RegionService } from './region.service'
 declare var jQuery: any;
@@ -8,6 +9,8 @@ declare var jQuery: any;
   templateUrl: './regiones.component.html',
 })
 export class RegionesComponent implements OnInit{
+
+  public formulario: Formulario = new Formulario()
 
   regiones: Region[] = [];
 

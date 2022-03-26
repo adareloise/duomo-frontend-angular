@@ -1,6 +1,6 @@
 <div class="mb-3" >
     <label for="region" class="form-label">Regiones</label>
-    <select id="region-select" class="form-select form-select-sm mb-3" >
+    <select id="region-select" class="form-select form-select-sm mb-3" [(ngModel)]="formulario.region">
         <option value=" " selected>Seleccione Region</option>
         <option value="{{ region.id }}" *ngFor="let region of regiones">{{ region.nombre }}</option>
     </select>        
@@ -8,7 +8,7 @@
 
 <div class="mb-3" >
     <label for="region" class="form-label">Comunas</label>
-    <select id="comunas" class="form-select form-select-sm mb-3">
+    <select id="comunas" class="form-select form-select-sm mb-3" [(ngModel)]="formulario.comuna"> 
         <option selected> Seleccione Comuna </option>
         <option value="comuna" *ngFor="let comuna of comunas">{{ comuna }}</option>
     </select>        
