@@ -1,7 +1,7 @@
 export class Region {
     
-    id: number = 0;
-    nombre: string = '';
-    comunas: string[] = [];
+    id: number;
+    nombre: string;
+    comunas: string[];
     
 }

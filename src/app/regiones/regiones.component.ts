@@ -16,6 +16,10 @@ export class RegionesComponent implements OnInit{
 
   comunas: string[] = [];
 
+  selectedRegion:Promise<boolean>|null = null
+  
+  comuna:Promise<string[]>|null = null
+
   constructor( private regionService: RegionService ) { }
 
   ngOnInit() {
@@ -24,15 +28,11 @@ export class RegionesComponent implements OnInit{
     );
   }
 
-  getComunas(){
-    const id = jQuery('#region-select').val();
-    
-    this.regiones.forEach((region) => {
-      if(id == region.id){
-        this.comunas = region.comunas; 
-      }
-    });
-
-    return this.comunas;
-  }
+  setComunasRegion(event){
+    this.selectedRegion = new Promise<boolean>((resolve, reject) => {
+      resolve(true)
+    })
+    this.comuna= new Promise<string[]>((res,rej)=>res(this.comunas = this.regionService.getComuna(event.target.value)))
+    console.log(this.comuna)
+    }
 }

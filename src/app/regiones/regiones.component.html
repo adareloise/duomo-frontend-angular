@@ -1,15 +1,16 @@
 <div class="mb-3" >
     <label for="region" class="form-label">Regiones</label>
-    <select id="region-select" class="form-select form-select-sm mb-3" [(ngModel)]="formulario.region">
-        <option value=" " selected>Seleccione Region</option>
+    <select id="region-select" class="form-select form-select-sm mb-3" 
+    [(ngModel)]="formulario.region"  (change)="setComunasRegion($event)">
+        <option selected>Seleccione Region</option>
         <option value="{{ region.id }}" *ngFor="let region of regiones">{{ region.nombre }}</option>
-    </select>        
+    </select>       
 </div> 
 
-<div class="mb-3" >
+<div class="mb-3" *ngIf="comunas.length > 1"  >
     <label for="region" class="form-label">Comunas</label>
-    <select id="comunas" class="form-select form-select-sm mb-3" [(ngModel)]="formulario.comuna"> 
+    <select id="comunas" class="form-select form-select-sm mb-3"> 
         <option selected> Seleccione Comuna </option>
-        <option value="comuna" *ngFor="let comuna of comunas">{{ comuna }}</option>
+        <option  value="{{ comuna }}" *ngFor="let comuna of comunas">{{ comuna }}</option>
     </select>        
 </div>

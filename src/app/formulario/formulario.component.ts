@@ -31,13 +31,11 @@ export class FormularioComponent implements OnInit{
     })
   }
 
-
-
  create(): void {
     this.listarService.create(this.formulario)
       .subscribe(formulario => {
-        this.router.navigate(['/clientes'])
-        swal.fire('Nuevo Formulario', `Formulario ${formulario.nombre} creado con éxito!`, 'success')
+        this.router.navigate(['/listar'])
+        swal.fire('Nuevo Formulario', `Nombre ${formulario.nombre} creado con éxito!`, 'success')
       }
       );
   }
@@ -45,8 +43,8 @@ export class FormularioComponent implements OnInit{
   update():void{
     this.listarService.update(this.formulario)
     .subscribe( formulario => {
-      this.router.navigate(['/clientes'])
-      swal.fire('Formulario Actualizado', `Formulario ${formulario.nombre} actualizado con éxito!`, 'success')
+      this.router.navigate(['/listar'])
+      swal.fire('Formulario Actualizado', `Nombre ${formulario.nombre} actualizado con éxito!`, 'success')
     })
   }
 }
