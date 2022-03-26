@@ -13,8 +13,8 @@
            <input type="email" class="form-control" id="email" name="email" [(ngModel)]="formulario.email" >
         </div>
         <div class="mb-3">
-            <label for=" fecha_nacimiento" class="form-label">Fecha de nacimiento</label>
-            <input type="text" class="form-control" id=" fecha_nacimiento" name=" fecha_nacimiento" [(ngModel)]="formulario.fecha_nacimiento" >
+            <label for="fechaNacimiento" class="form-label">Fecha de nacimiento</label>
+            <input type="text" class="form-control" id="fechaNacimiento" name="fechaNacimiento" [(ngModel)]="formulario.fechaNacimiento" >
         </div>
         <div class="mb-3">
             <label for="telefono" class="form-label">Telefono</label>
@@ -23,9 +23,10 @@
         
         <app-regiones></app-regiones>
         
-        <button type="submit" class="btn btn-primary my-4 float-end" (click)="create()" *ngIf="!formulario.id else elseBlock">Enviar</button>
+        <button  role="button" class="btn btn-primary my-4 float-end" (click)="create()" *ngIf="!formulario.id else elseBlock">Enviar</button>
+        
         <ng-template #elseBlock>
-          <button type="submit" class="btn btn-primary my-4 float-end" (click)="update()" *ngIf="!formulario.id else elseBlock">Editar</button>
+          <button  role="button" class="btn btn-primary my-4 float-end" role="button" (click)='update()'>Editar</button>
         </ng-template>
       </form>
 </div>

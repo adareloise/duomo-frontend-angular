@@ -4,7 +4,7 @@ export class Formulario {
     nombre: string;
     apellido: string;
     email: string;
-    fecha_nacimiento: string;
+    fechaNacimiento: string;
     telefono: string;
     region: string;
     comuna: string;
