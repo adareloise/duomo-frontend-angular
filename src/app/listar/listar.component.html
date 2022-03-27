@@ -1,13 +1,13 @@
 <div class="card border-primary mb-3">
-    <div class="card-header">Formularios</div>
+    <div class="card-header text-center">Formularios</div>
     <div class="card-body text-primary">
-      <h5 class="card-title">Listado de formularios</h5>
       <div class="my-2 text-left">
         <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/formulario']">
           Crear Formulario
         </button>
       </div>
-      <table class="table table-bordered table-striped">
+      
+      <table class="table table-bordered table-striped my-4">
         <thead>
           <tr>
             <th>id</th>
@@ -33,10 +33,10 @@
             <td>{{ form.region }}</td>
             <td>{{ form.comuna }}</td>
             <td>
-              <button type="button" name="editar" [routerLink]="['/formulario', form.id]" class="btn btn-primary btn-sm">editar</button>
+              <button type="button" name="editar" [routerLink]="['/formulario', form.id]" class="btn btn-outline-success btn-sm">editar</button>
             </td>
             <td>
-              <button type="button" name="eliminar" (click)='delete(form)' class="btn btn-danger btn-sm">eliminar</button>
+              <button type="button" name="eliminar" (click)='delete(form)' class="btn btn-outline-danger btn-sm">eliminar</button>
             </td>
           </tr>
         </tbody>
