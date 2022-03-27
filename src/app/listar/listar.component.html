@@ -7,7 +7,10 @@
         </button>
       </div>
       
-      <table class="table table-bordered table-striped my-4">
+      <div class="alert alert-info my-4" role="alert" *ngIf="formularios?.length == 0"> 
+        No existen formularios en el registro de la base de datos
+      </div>
+      <table class="table table-bordered table-striped my-4" *ngIf="formularios?.length > 0">
         <thead>
           <tr>
             <th>id</th>
