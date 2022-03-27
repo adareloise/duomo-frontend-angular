@@ -5,12 +5,12 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { FormularioComponent } from './formulario/formulario.component';
-import { RegionesComponent } from './regiones/regiones.component';
 import { RegionService } from './regiones/region.service';
 import { ListarComponent } from './listar/listar.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule} from '@angular/common/http'
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ListarService } from './listar/listar.service';
 
 const routes: Routes = [
   {path:'', redirectTo: '/formulario', pathMatch: 'full'},
@@ -26,17 +26,18 @@ const routes: Routes = [
     HeaderComponent,
     FooterComponent,
     FormularioComponent,
-    RegionesComponent,
     ListarComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot(routes)
   ],
   providers: [
-    RegionService
+    RegionService,
+    ListarService
   ],
   bootstrap: [AppComponent]
 })

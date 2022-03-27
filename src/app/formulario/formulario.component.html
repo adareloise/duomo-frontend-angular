@@ -21,7 +21,22 @@
             <input type="text" class="form-control" id="telefono" name="telefono" [(ngModel)]="formulario.telefono" >
         </div> 
         
-        <app-regiones></app-regiones>
+        <div class="mb-3" >
+          <label for="region" class="form-label">Regiones</label>
+          <select id="region-select" class="form-select form-select-sm mb-3" 
+            [(ngModel)]="formulario.region"  (change)="setComunasRegion($event)">
+              <option selected>Seleccione Region</option>
+              <option value="{{ region.id }}" *ngFor="let region of regiones">{{ region.nombre }}</option>
+          </select>       
+        </div> 
+      
+        <div class="mb-3" *ngIf="comunas.length > 1"  >
+          <label for="region" class="form-label">Comunas</label>
+          <select id="comunas" class="form-select form-select-sm mb-3" [(ngModel)]="formulario.comuna" > 
+              <option selected> Seleccione Comuna </option>
+              <option  value="{{ comuna }}" *ngFor="let comuna of comunas">{{ comuna }}</option>
+          </select>        
+        </div>
         
         <button  role="button" class="btn btn-primary my-4 float-end" (click)="create()" *ngIf="!formulario.id else elseBlock">Enviar</button>
         

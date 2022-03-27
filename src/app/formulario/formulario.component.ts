@@ -3,7 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ListarService } from '../listar/listar.service';
 import { Formulario } from './formulario';
 import swal from 'sweetalert2';
-
+import { Region } from '../regiones/region';
+import { RegionService } from '../regiones/region.service';
 
 @Component({
   selector: 'app-formulario',
@@ -11,15 +12,30 @@ import swal from 'sweetalert2';
   styleUrls: ['./formulario.component.css']
 })
 export class FormularioComponent implements OnInit{
+  
   public formulario: Formulario = new Formulario()
+  
   public titulo:string = "Crear Formulario"
 
-  constructor(private listarService: ListarService,
+  regiones: Region[] = [];
+
+  comunas: string[] = [];
+
+  selectedRegion:Promise<boolean>|null = null
+  
+  comuna:Promise<string[]>|null = null
+
+  constructor(
+    private listarService: ListarService,
+    private regionService: RegionService,
     private router: Router,
-  private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute
+  ) { }
 
   ngOnInit() { 
-    this.cargarFormulario()
+    this.regionService.getRegion().subscribe(
+    regiones => this.regiones = regiones);
+    this.cargarFormulario();
    } 
 
    cargarFormulario(): void{
@@ -46,5 +62,13 @@ export class FormularioComponent implements OnInit{
       this.router.navigate(['/listar'])
       swal.fire('Formulario Actualizado', `Nombre ${formulario.nombre} actualizado con éxito!`, 'success')
     })
+  }
+
+  setComunasRegion(event){
+    this.selectedRegion = new Promise<boolean>((resolve, reject) => {
+      resolve(true)
+    })
+    this.comuna= new Promise<string[]>((res,rej)=>res(this.comunas = this.regionService.getComuna(event.target.value)))
+    console.log(this.comuna)
   }
 }
