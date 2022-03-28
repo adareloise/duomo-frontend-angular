@@ -9,7 +9,7 @@ import { RegionService } from './regiones/region.service';
 import { ListarComponent } from './listar/listar.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule} from '@angular/common/http'
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { ListarService } from './listar/listar.service';
 
 const routes: Routes = [
@@ -31,7 +31,6 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot(routes)
   ],
