@@ -2,29 +2,68 @@
     <form>        
         <div class="mb-3">
           <label for="nombre" class="form-label">Nombre</label>
-          <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="formulario.nombre"> 
+          <input type="text" class="form-control" id="nombre" name="nombre" 
+            [(ngModel)]="formulario.nombre" required #nombre="ngModel" minlength="4"> 
+          <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+            <div *ngIf="nombre.errors['required']">
+              El nombre es requerido
+            </div>
+            <div *ngIf="nombre.errors['minlength']">
+              Debe tener al menos 4 caracteres
+            </div>
+          </div>
         </div>
         <div class="mb-3">
           <label for="apellido" class="form-label">Apellido</label>
-          <input type="text" class="form-control" id="apellido" name="apellido" [(ngModel)]="formulario.apellido">
+          <input type="text" class="form-control" id="apellido" name="apellido" 
+            [(ngModel)]="formulario.apellido" required #apellido="ngModel" minlength="4">
+          <div class="alert alert-danger" *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)">
+            <div *ngIf="apellido.errors['required']">
+              El apellido es requerido
+            </div>
+            <div *ngIf="apellido.errors['minlength']">
+              Debe tener al menos 4 caracteres
+            </div>
+          </div>
         </div>
         <div class="mb-3">
-           <label for="email" class="form-label">Correo</label>
-           <input type="email" class="form-control" id="email" name="email" [(ngModel)]="formulario.email" >
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" name="email" 
+            [(ngModel)]="formulario.email" required email #email="ngModel">
+            <div class="alert alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+              <div *ngIf="email.errors['required']">
+                El email es requerido
+              </div>
+              <div *ngIf="apellido.errors['email']">
+                Debe tener un formato valido
+              </div>
+            </div>
         </div>
         <div class="mb-3">
             <label for="fechaNacimiento" class="form-label">Fecha de nacimiento</label>
-            <input type="text" class="form-control" id="fechaNacimiento" name="fechaNacimiento" [(ngModel)]="formulario.fechaNacimiento" >
+            <input type="text" class="form-control" id="fechaNacimiento" name="fechaNacimiento" 
+              [(ngModel)]="formulario.fechaNacimiento" required #fechaNacimiento="ngModel">
+              <div class="alert alert-danger" *ngIf="fechaNacimiento.invalid && (fechaNacimiento.dirty || fechaNacimiento.touched)">
+                <div *ngIf="fechaNacimiento.errors['required']">
+                  La Fecha de nacimiento es requerida
+                </div>
+              </div>
         </div>
         <div class="mb-3">
             <label for="telefono" class="form-label">Telefono</label>
-            <input type="text" class="form-control" id="telefono" name="telefono" [(ngModel)]="formulario.telefono" >
+            <input type="text" class="form-control" id="telefono" name="telefono" 
+              [(ngModel)]="formulario.telefono" required #telefono="ngModel">
+              <div class="alert alert-danger" *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)">
+                <div *ngIf="telefono.errors['required']">
+                  El Telefono es requerido
+                </div>
+              </div>
         </div> 
         
         <div class="mb-3" >
           <label for="region" class="form-label">Regiones</label>
           <select id="region-select" class="form-select form-select-sm mb-3" 
-            [(ngModel)]="formulario.region"  (change)="setComunasRegion($event)">
+            [(ngModel)]="formulario.region"  (change)="setComunasRegion($event)" >
               <option selected>Seleccione Region</option>
               <option value="{{ region.id }}" *ngFor="let region of regiones">{{ region.nombre }}</option>
           </select>       
@@ -32,16 +71,19 @@
       
         <div class="mb-3" *ngIf="comunas.length > 1"  >
           <label for="region" class="form-label">Comunas</label>
-          <select id="comunas" class="form-select form-select-sm mb-3" [(ngModel)]="formulario.comuna" > 
+          <select id="comunas" class="form-select form-select-sm mb-3" [(ngModel)]="formulario.comuna"> 
               <option selected> Seleccione Comuna </option>
               <option  value="{{ comuna }}" *ngFor="let comuna of comunas">{{ comuna }}</option>
           </select>        
         </div>
         
-        <button  role="button" class="btn btn-primary my-4 float-end" (click)="create()" *ngIf="!formulario.id else elseBlock">Enviar</button>
+        <button  role="button" class="btn btn-primary my-4 float-end" (click)="create()" 
+        *ngIf="!formulario.id else elseBlock">
+          Enviar</button>
         
         <ng-template #elseBlock>
-          <button  role="button" class="btn btn-primary my-4 float-end" role="button" (click)='update()'>Editar</button>
+          <button  role="button" class="btn btn-primary my-4 float-end" role="button" (click)='update()'>
+            Editar</button>
         </ng-template>
       </form>
 </div>
