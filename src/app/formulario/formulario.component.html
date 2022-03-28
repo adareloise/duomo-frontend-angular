@@ -42,12 +42,8 @@
         <div class="mb-3">
             <label for="fechaNacimiento" class="form-label">Fecha de nacimiento</label>
             <input type="text" class="form-control" id="fechaNacimiento" name="fechaNacimiento" 
-              [(ngModel)]="formulario.fechaNacimiento" required #fechaNacimiento="ngModel">
-              <div class="alert alert-danger" *ngIf="fechaNacimiento.invalid && (fechaNacimiento.dirty || fechaNacimiento.touched)">
-                <div *ngIf="fechaNacimiento.errors['required']">
-                  La Fecha de nacimiento es requerida
-                </div>
-              </div>
+              [(ngModel)]="formulario.fechaNacimiento">
+  
         </div>
         <div class="mb-3">
             <label for="telefono" class="form-label">Telefono</label>
